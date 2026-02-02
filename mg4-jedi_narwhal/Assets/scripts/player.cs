@@ -4,7 +4,17 @@ using UnityEngine;
 
 public class player : MonoBehaviour
 {
-    // Start is called before the first frame update
+  
+    [SerializeField] private gamecontroller _gameController;
+    [SerializeField] private Rigidbody2D _rigidbody;
+    [SerializeField] private float _jump;
+       private bool _isGrounded;
+
+
+
+
+
+
     void Start()
     {
         // may not need this
@@ -13,18 +23,26 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //space= jump and allow jump in air
-    }
-    void OnCollisionEnter2D(Collision2D collision)
+        if (Input.GetKey(KeyCode.Space))
     {
-        // is grounded when on ground
+
+        _rigidbody.velocity = new Vector2(
+        _rigidbody.velocity.x,
+        _jump);
+       
     }
+    
+    }
+     
      private void OnTriggerEnter2D(Collider2D col)
     {
-        //update points
+        _gameController.AddPoints();
     }
 
-
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Destroy(gameObject);
+    }
 
 
 

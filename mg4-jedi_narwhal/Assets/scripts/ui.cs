@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ui : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    [SerializeField] private TextMeshProUGUI _pointstext;
+
+
+
+
+
+
     void Start()
     {
-        
+        gamecontroller.Instance.Score+= HandlePoints;
     }
 
-    // Update is called once per frame
-    void Update()
+    // Update is called once per frame  
+    void HandlePoints(int _points)
     {
-        
+        _pointstext.text= "Score:"+_points.ToString();
     }
 }

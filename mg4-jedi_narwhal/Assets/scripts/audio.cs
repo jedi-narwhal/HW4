@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class audio : MonoBehaviour
 {
-    // Start is called before the first frame update
+       private AudioSource _audioSource;
     void Start()
     {
-        
+        gamecontroller.Instance.Score+= HandlePoints;
+        _audioSource=GetComponent<AudioSource>(); 
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    void HandlePoints(int _points)
+    {
+
+        _audioSource.Play();
     }
 }

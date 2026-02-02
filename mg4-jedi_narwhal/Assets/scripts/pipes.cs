@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class pipes : MonoBehaviour
 {
-    // Start is called before the first frame update
+  
+    [SerializeField] private Rigidbody2D _rigidbody;
+    [SerializeField] private float _speed;
+
+
+
     void Start()
     {
-        
+        //do not need
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+         _rigidbody.velocity= new Vector2(-1,0) *_speed;
     }
 }

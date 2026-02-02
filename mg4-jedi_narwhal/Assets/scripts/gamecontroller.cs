@@ -4,23 +4,44 @@ using UnityEngine;
 
 public class gamecontroller : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    private int _points;
+    [SerializeField] private GameObject _pipePrefab;
+    [SerializeField] private float _minadd;
+     [SerializeField] private float _maxadd;
+     private float _lastspawned;  
+    [SerializeField] private Transform _spawnpoint;
+
+    [SerializeField] private float _frequency;
+
+
+
+
+
     void Start()
     {
-        //points=0
-        //set frequencey for random.range height
+        _points =0;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
         //check time elaspe-time.time-check google if statement
         //timeelapse>= frquency-call spawn pipe
+        if (Time.time-_lastspawned>=_frequency)
+        {
+  
+            _lastspawned=Time.time;
+          float  _addamount =Random.Range(_minadd,_maxadd);
+            Vector3 _newspawn= new Vector3(_spawnpoint.position.x,_spawnpoint.position.y+_addamount,_spawnpoint.position.z);
+            Instantiate(_pipePrefab, _newspawn,Quaternion.identity);
+        
+        }
+
     }
-    void SpawnPipes()
-    {
-        //instinate
-    }
+
      
     public static gamecontroller Instance { get; private set; }
 
@@ -35,14 +56,13 @@ public class gamecontroller : MonoBehaviour
         Instance = this;
     }
 
-    public delegate void Delegate();
+    public delegate void Delegate(int _points);
     public event Delegate Score;
 
-    private int _points;
-    void AddPoints()
+    public void AddPoints()
     {
         _points++;
-        Score?.Invoke();
+        Score?.Invoke(_points);
     }
 
 
