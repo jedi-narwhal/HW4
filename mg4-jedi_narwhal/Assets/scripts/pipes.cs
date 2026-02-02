@@ -5,7 +5,6 @@ using UnityEngine;
 public class pipes : MonoBehaviour
 {
   
-    [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private float _speed;
 
 
@@ -18,6 +17,6 @@ public class pipes : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         _rigidbody.velocity= new Vector2(-1,0) *_speed;
+         transform.Translate(Vector2.left*_speed*Time.deltaTime);
     }
 }

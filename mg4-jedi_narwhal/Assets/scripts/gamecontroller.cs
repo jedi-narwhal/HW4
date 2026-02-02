@@ -32,11 +32,12 @@ public class gamecontroller : MonoBehaviour
         //timeelapse>= frquency-call spawn pipe
         if (Time.time-_lastspawned>=_frequency)
         {
-  
+            Debug.Log("spawn");
             _lastspawned=Time.time;
           float  _addamount =Random.Range(_minadd,_maxadd);
             Vector3 _newspawn= new Vector3(_spawnpoint.position.x,_spawnpoint.position.y+_addamount,_spawnpoint.position.z);
             Instantiate(_pipePrefab, _newspawn,Quaternion.identity);
+            Debug.Log("prefab");
         
         }
 

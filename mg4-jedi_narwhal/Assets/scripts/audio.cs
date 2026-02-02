@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class audio : MonoBehaviour
 {
-       private AudioSource _audioSource;
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private player _player;
     void Start()
     {
         gamecontroller.Instance.Score+= HandlePoints;
+        _player.EndGame+= HandleEndgame;
         _audioSource=GetComponent<AudioSource>(); 
     }
 
@@ -20,6 +22,11 @@ public class audio : MonoBehaviour
     void HandlePoints(int _points)
     {
 
-        _audioSource.Play();
+        //_audioSource.Play();
+    }
+void HandleEndgame()
+    {
+        //_audioSource.Play();
+        
     }
 }
