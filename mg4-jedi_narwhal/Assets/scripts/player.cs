@@ -9,6 +9,7 @@ public class player : MonoBehaviour
     [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private float _jump;
     [SerializeField] private AudioSource _audioSource;
+     [SerializeField] private AudioClip _audioflying;
     private bool _gameover;
        private bool _isGrounded;
 
@@ -32,8 +33,9 @@ public class player : MonoBehaviour
                 _rigidbody.velocity = new Vector2(
                 _rigidbody.velocity.x,
                 _jump);   
-                Debug.Log("jump");
-                //_audioSource.Play();
+                Debug.Log("jump");       
+                 _audioSource.clip=_audioflying;
+                _audioSource.Play();
             }
     
     }
